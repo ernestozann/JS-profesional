@@ -47,26 +47,57 @@
 // //Object
 // let someObject: object = { type: 'Wildcard'};
 
-//Funciones
-function add(a: number, b:number): number {
-    return a + b;
+// //Funciones
+// function add(a: number, b:number): number {
+//     return a + b;
+// }
+
+// const sum = add(4,6);
+
+// function createAdder (a: number): (number) => number {
+//     return function (b: number) {
+//         return b + a;
+//     }
+// }
+
+// const addFour = createAdder(4);
+// const fourPlus6 = addFour(6);
+
+
+// function fullName(firstName: string,lastName: string = 'Smith'): string {
+//     return `${firstName} ${lastName}`;
+// }
+
+// const eru = fullName("Ernesto","Martinez");
+// console.log(eru);
+
+//interfaces
+enum Color {
+    Rojo = 'Rojo',
+    Verde = 'Verde',
 }
 
-const sum = add(4,6);
-
-function createAdder (a: number): (number) => number {
-    return function (b: number) {
-        return b + a;
-    }
+interface Rectangulo {
+    ancho: number;
+    alto: number;
+    color?: Color;
 }
 
-const addFour = createAdder(4);
-const fourPlus6 = addFour(6);
-
-
-function fullName(firstName: string,lastName: string = 'Smith'): string {
-    return `${firstName} ${lastName}`;
+let rect: Rectangulo = {
+    ancho: 4,
+    alto: 6,
+    // color: Color.Rojo,
 }
 
-const eru = fullName("Ernesto","Martinez");
-console.log(eru);
+function area(r:Rectangulo) {
+    return r.ancho * r.alto;
+}
+
+const areaRect = area(rect);
+console.log(`${areaRect} cm2`);
+
+rect.toString = function() {
+    return this.color ? `Un rectangulo ${this.color}` : `Un rectangulo`;
+};
+
+console.log(rect.toString());
