@@ -1,9 +1,10 @@
-import MediaPlayer from './MediaPlayer';
-import AutoPlay from './plugins/AutoPlay';
-import AutoPause from './plugins/AutoPause';
+import MediaPlayer from '@ernestozann/platzimediaplayer';
+import AutoPlay from '@ernestozann/platzimediaplayer/lib/plugins/AutoPlay';
+import AutoPause from '@ernestozann/platzimediaplayer/lib/plugins/AutoPause';
+import Ads from '@ernestozann/platzimediaplayer/lib/plugins/ads';
 
 const video = document.querySelector('video');
-const player = new MediaPlayer({ el: video, plugins: [new AutoPlay(), new AutoPause()] });
+const player = new MediaPlayer({ el: video, plugins: [new AutoPlay(), new AutoPause(), new Ads()] });
 
 const playButton: HTMLElement = document.querySelector('#playButton');
 playButton.onclick = () => player.togglePlay();
